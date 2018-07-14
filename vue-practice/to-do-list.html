@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>toDOList</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-model:双向数据绑定 -->
+        <input type="text" v-model="thing"/>
+        <!-- @事件绑定 -->
+         <button @click="addList">提交</button>
+         <ul >
+             <!-- 列表渲染,key值要和v-for放在一起 ，数据绑定用:-->
+             <!-- 渲染数据用{{}} -->
+             <li v-for="(index,item) in arr" :key="index" track-by="$index">{{item}}--{{index}}</li>
+         </ul>
+    </div>
+    <script>
+        let app = new Vue({
+            el:"#app",
+            data:{
+                arr:[],
+                thing:''
+            },
+            methods: {
+                addList(){
+                    this.arr.push(this.thing);
+                    this.thing = '';
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>
