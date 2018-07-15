@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{full}}</p>
+        <p>{{fullM()}}</p>
+        <p>{{fullW}}</p>
+        <p>{{other}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                first: "sam",
+                last: "jack",
+                fullW: "wwwwww",
+                other: "kkk",
+            },
+            //方法效率和性能比不上computed和watch;
+            methods: {
+                fullM() {
+                    console.log(Math.random())
+                    return this.first + " " + this.last;
+                }
+            },
+            //watch也有缓存机制
+            watch: {
+                first() {
+                    console.log(111)
+                    this.fullW = this.first + this.last;
+                },
+                last() {
+                    this.fullW = this.first + this.last;
+                }
+            },
+            //computed依赖缓存
+            computed: {
+                full() {
+                    console.log("do again");
+                    return this.first + " " + this.last;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
