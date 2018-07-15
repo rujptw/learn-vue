@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板语法</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <p>{{color}}</p>
+        <p>{{color==="green"? "purple":"green"}}</p>
+        <p v-text="background + ' '+  color"></p>
+        <p v-html="html"></p>
+    </div>
+    <script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            color:"green",
+            background:"red",
+            html:"<b>I am bigger</b>"
+        }
+    })
+    </script>
+</body>
+</html>
