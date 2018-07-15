@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+</head>
+<body>
+    <ul id="root">
+        <!-- 第一个参数代表索引，第二个代表数组项 -->
+        <li v-for="(index,item) in arr" :key="index">
+            {{item}} ---- {{index}}
+        </li>
+    </ul>
+    <ul id="app">
+        <!-- 第一个参数代表属性名，第二个代表属性值 -->
+        <li v-for="(key,value) in object" :key="key">
+           {{key}}  {{value}} 
+        </li>
+    </ul> 
+    <script>
+        var root = new Vue({
+        el:"#root",
+        data:{
+            arr:[1,2,3,4,5]
+        }
+    }) 
+        var app = new Vue({
+            el:"#app",
+            data:{
+                object:{
+                    color:"green",
+                    species:"monkey"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
