@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 此时为自定义事件,需要emit的帮助 -->
+        <div>
+                <child @click="getInfo"></child>
+                <child @click.native="getInfo"></child>
+        </div>
+        
+    </div>
+    
+    <script>
+        Vue.component("child", {
+            template: "<p>i am a native</p>"
+        })
+        new Vue({
+            el: "#app",
+            methods: {
+                getInfo() {
+                    console.log("Info")
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
