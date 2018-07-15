@@ -20,8 +20,17 @@
             <!-- 渲染数据用{{}} -->
             <to-do :index=index :content=item v-for="(index,item) in arr" :key="index" track-by="$index" @delete="deleteItem"></to-do>
         </ul>
+        <test></test>
     </div>
     <script>
+        Vue.component("test",{
+            data(){
+                return {
+                test:"i am a test man"
+                }
+            },
+            template:"<p>{{test}}</p>"
+        })
         // 全局组件不用注册
         // Vue.component("toDo",{
         //     props:['content'],
