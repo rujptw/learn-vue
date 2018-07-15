@@ -15,6 +15,7 @@
         <p>{{fullM()}}</p>
         <p>{{fullW}}</p>
         <p>{{other}}</p>
+        <p>{{color}}</p>
     </div>
     <script>
         var app = new Vue({
@@ -44,9 +45,22 @@
             },
             //computed依赖缓存
             computed: {
+                //计算属性的一种写法
                 full() {
                     console.log("do again");
                     return this.first + " " + this.last;
+                },
+                //计算属性的另外一种写法
+                color:{
+                    get:function (){
+                        return this.first + ' ' + this.last
+                    },//取值
+                    set:function (v){
+                        let arr = v.split(" ");
+                        this.first = arr[0];
+                        this.last = arr[1];
+                    }//设置值
+
                 }
             }
         })
