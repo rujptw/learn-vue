@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <counter :count='count' @change="addTotal"></counter>
+        <counter :count='count' @change="addTotal"></counter>
+        <p>{{total}}</p>
+    </div>
+    <script>
+            var counter = {
+                props:['count'],
+                template:"<li @click='changeCount'>{{number}}</li>",
+                data(){
+                    return{
+                        number:this.count
+                    }
+                },
+                methods:{
+                    changeCount(){
+                        this.number++;
+                        this.$emit("change",1)
+                    }
+                }
+            }
+            new Vue({
+                el:"#app",
+                data:{
+                    count:1,
+                    total:2
+                },
+                components:{
+                    counter
+                },
+                methods: {
+                    addTotal(v){
+                        this.total+=1;
+                    }
+                }
+            })
+    </script>
+    
+</body>
+</html>

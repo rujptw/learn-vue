@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>样式绑定</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+    <style>
+    .changColor{
+        color:aqua;
+    }
+    </style>
+</head>
+<body>
+    <div id="app" @click="change" :class="{changColor:isActive}" :style="[styleObj]">helloooo</div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                isActive:false,
+                styleObj:{
+                    color:"red",
+                    background:"aqua"
+                }
+            },
+            methods: {
+                change(){
+                    this.isActive = !this.isActive;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

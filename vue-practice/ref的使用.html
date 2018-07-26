@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p ref="par">{{mess}}</p>
+    <p @click="getCode" > i am a pargraph</p>
+    </div>
+    <script>
+       var app =  new Vue({
+            el:"#app",
+            data:{
+                mess:"hjhj"
+            },
+            methods: {
+                getCode(){
+                    console.log(this.$refs.par)
+                }
+            },
+            updated() {
+                console.log(this.$refs.par)
+            },
+        })
+    </script>
+</body>
+</html>

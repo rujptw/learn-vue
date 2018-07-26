@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div>
+                <grand :message="what"></grand>
+                <child :content="123"></child>
+        </div>    
+        
+    </div>
+    <script>
+        Vue.component("child", {
+            props: {
+                content: [String, Number] //参数需为字符串或者数字
+            },
+            template: "<p>{{content}}</p>"
+        })
+        Vue.component("grand", {
+            props: {
+                message: {
+                    type: String,//类型校验
+                    required: false,//是否必须
+                    default: "words",//默认值
+                    validator:function(v){//校验器
+                        return v.length>=4
+                    }
+                },
+                template: "<p>{{message}}</p>"
+            }
+        })
+        var app = new Vue({
+            el: "#app",
+            data:{
+                what:"something"
+            }
+        })
+    </script>
+
+</body>
+
+</html>

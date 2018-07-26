@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 一个组件的根元素上直接监听一个原生事件。这时，你可以使用 v-on 的 .native 修饰符 -->
+        <child @click.native="output"></child>
+    </div>
+    </div>
+    <script>
+        var child = {
+            template:"<p>a new Child</p>"
+        }
+        new Vue({
+            el:"#app",
+            components:{
+                child
+            },
+            methods:{
+                output(){
+                    console.log("output")
+                }
+            }
+        })
+    </script>
+</body>
+</html>

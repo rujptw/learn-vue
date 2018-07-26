@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+</head>
+
+<body>
+    <div id="app" ref="scp">
+        <row @change="acceptChange" ></row>
+        <row @change="acceptChange"></row>
+        <div>{{total}}</div>
+    </div>
+    <script>
+        Vue.component("row", {
+            template: "<div @click='add'>{{number}}</div>",
+            data() {
+                return {
+                    number: 0
+                }
+            },
+            methods: {
+                add: function () {
+                    this.number++;
+                    this.$emit("change")
+                }
+            }
+
+        })
+        new Vue({
+            el: "#app",
+            data: {
+                total: 0
+            },
+            methods: {
+                acceptChange() {
+                    console.log(this.$refs.scp)
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

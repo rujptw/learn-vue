@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <child :memo="memo"></child>
+        <child :memo="memo"></child>
+    </div>
+    <script>
+        Vue.prototype.bus = new Vue();
+        var child = {
+            props: ["memo"],
+            template: "<p @click='getClick'>{{memo}}</p>",
+            methods: {
+                getClick(){
+                    console.log("change")
+                    this.bus.$emit("change",this.memo)
+                }
+            },
+            mounted(){
+                console.log("change2")
+                this.bus.$on("change",function(mes){
+                    console.log(mes)
+                })
+            }
+        }
+        new Vue({
+            el: "#app",
+            data: {
+                memo: "show me",
+            },
+            components: {
+                child
+            }
+        })
+    </script>
+</body>
+
+</html>
