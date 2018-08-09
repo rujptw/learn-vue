@@ -8,8 +8,19 @@
 4. 命名插槽：name属性和html上的slot属性值**相同**，一一对应。
 
 >slot-scope:作用域插槽=====》带数据的插槽
-1. 内容由slot所在的组件提供，不由父组件提供。
+1. 内容由slot所在的组件提供，不由父组件提供，除了这个以上规则和普通插槽一致
 2. 在slot上绑定自定义属性将数据传输到父组件上。父组件上的template上要绑定slot-scope用以接收子组件的数据。
+
+
+
+>问题
+ 1. [Vue warn]: Duplicate presence of slot "default" found in the same render tree - this will likely cause render errors.
+   * 解决办法：给slot取不同的名字
+
+
+>参考
+ 1. https://github.com/cunzaizhuyi/vue-slot-demo
+ 2. https://cnodejs.org/topic/58c0ad17d282728c0ec4029a
 
 
 
