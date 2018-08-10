@@ -82,7 +82,7 @@ export default {
         },
         // X轴
         xAxis: {
-          type: "category",
+          type: "category",//数轴类型:value(连续数据),category(离散数据),time(连续的时序数据),log(对数数据)
           data: ["一月", "二月", "三月", "四月"],
           name: "月份",
           axisPointer: {
