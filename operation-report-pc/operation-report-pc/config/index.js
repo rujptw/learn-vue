@@ -37,6 +37,9 @@ module.exports = {
   },
 
   build: {
+    //引入环境
+    testEnv: require('./test.env'),
+    prodEnv: require('./prod.env'),
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
 
@@ -48,8 +51,8 @@ module.exports = {
     /**
      * Source Maps
      */
-
-    productionSourceMap: true,
+    //在测试环境开启sourcemap
+    productionSourceMap:process.env.NODE_ENV === 'test',
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 

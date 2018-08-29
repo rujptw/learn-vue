@@ -97,7 +97,7 @@ export default {
             axisLabel: {
               //坐标轴上的刻度
               formatter: "{value}",
-              data: [50, 100, 150, 200, 250, 300, 350]
+              data: [50, 100, 150, 200, 250, 300, 350,400,450,500,550,600]
             },
             splitLine: {//grid分割线的样式
               lineStyle: {
@@ -112,7 +112,7 @@ export default {
             name: "价格(元)",
             axisLabel: {
               formatter: "{value}",
-              data: [100, 200, 300, 400]
+              data: [100, 200, 300, 400,500,600]
             }
           }
         ],
@@ -121,11 +121,13 @@ export default {
           {
             name: "衣服",
             type: "bar",
+            stack:"num",
             data: [120, 100, 440, 320]
           },
           {
             name: "帽子",
             type: "bar",
+            stack:"num",
             data: [200, 120, 240, 330],
             markLine: {
               //辅助线
@@ -147,6 +149,7 @@ export default {
           {
             name: "裤子",
             type: "bar",
+            stack:"num",
             data: [120, 200, 240, 260]
           },
           {
@@ -154,7 +157,8 @@ export default {
             type: "bar",
             //barGap控制不同系列的柱形图之间的距离,-100%为完全贴合(百分比是相对于柱子的宽度)，数字越大，间隔越大
             //在同一坐标系上，此属性会被多个 'bar' 系列共享。此属性应设置于此坐标系中最后一个 'bar' 系列上才会生效，并且是对此坐标系中所有 'bar' 系列生效。
-            barGap: "-100%",
+            // barGap: "-100%",
+            stack:"num",
             data: [120, 200, 300, 140]
           },
           {

@@ -29,7 +29,6 @@ module.exports = {
       //给路径配置别名[绝对路径]，防止写太长的路径   
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'common':path.resolve(__dirname,'../src/common'),
       'api':path.resolve(__dirname,"../src/api"),
       'assets':path.resolve(__dirname,"../src/assets"),
       'components':path.resolve(__dirname,"../src/components"),
