@@ -15,7 +15,7 @@
         <child :memo="memo"></child>
     </div>
     <script>
-        Vue.prototype.bus = new Vue();
+        Vue.prototype.bus = new Vue();//将bus总线挂载到Vue的原型中
         var child = {
             props: ["memo"],
             template: "<p @click='getClick'>{{memo}}</p>",
