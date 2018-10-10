@@ -8,10 +8,22 @@
     <script src="http://apps.bdimg.com/libs/vue/1.0.8/vue.js"></script>
 </head>
 <body>
-    <div id="app">{{message}}</div>
+    <div id="app">
+        <div>
+                <p>{{message}}</p>
+                <button @click="ridOf">ridOf</button>
+        </div>
+        
+        
+    </div>
     <script>
         var app = new Vue({
             el:"#app",
+            methods:{
+                ridOf(){
+                    this.message = "take care , I am go"
+                }
+            },
             data:{
                 message:"talk is expensive"
             },
@@ -40,6 +52,9 @@
             },
             destroyed () {
                 console.log("destroyed");
+                console.log(this.$data);
+                console.log(this.$el);
+                console.log(this.ridOf);
             }
         })
     </script>
