@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-text practice</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-text不应该用在template上，因为它不是一个真实的dom -->
+        <p v-text="text"></p>
+        <!--用到v-html,应该想到用vue组件来进行代替,动态插入html是非常危险的，尤其是在用户的输入上 -->
+        <p v-html="element"></p>
+    </div>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data:{
+                text:"i am a little birld",
+                element:"<b>i am a little birld</b>"
+            }    
+        })
+    </script>
+
+</body>
+
+</html>

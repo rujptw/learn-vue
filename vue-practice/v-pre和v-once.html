@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-pre和v-once</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-pre会忽略插值表达式里的数据，直接原样显示,适合用在永远不会改变的静态内容上，借此提高性能 -->
+        <p v-pre>{{msg}}</p>
+        <!-- v-once适合初次渲染就后就不会再改变的内容,能提高性能，不能过度使用，会造成困惑->
+        <p v-once>{{msg1}}</p>
+        <!-- v-cloak:隐藏未编译的Mustache(双花括号)的标签，直到vue实例准备完毕（mounted），可以解决{{content}}显示问题，v-text也可以解决同样的问题-->
+        <p v-cloak>{{msg2}}</p>
+    </div>
+    <script>
+        let app = new Vue({
+            el:"#app",
+            data:{
+                msg:"i will never change",
+                msg1:"i will never change agagin",
+                msg2:"cloak"
+            }
+        })
+    </script>
+</body>
+</html>

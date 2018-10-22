@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-show和v-if</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+        <div id="app">
+            <!-- v-show:只是切换元素的显示和隐藏状态，本身并没有被销毁 -->
+            <!-- v-if:在true时创建元素,，而在false时就会销毁元素， -->
+            <!-- 场景：切换比较频繁用v-show，切换不怎么频繁用v-if-->
+            <p v-if="apple==='green'? true:false">{{apple}}</p>
+            <p v-show="lemon==='yellow'? true:false">{{lemon}}</p>
+        </div>
+        <script>
+            let app = new Vue({
+                el:"#app",
+                data:{
+                    apple:"green",
+                    lemon:"yellow"
+                }
+            })
+        </script>
+</body>
+</html>
