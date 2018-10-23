@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--普通输入框双向绑定-->
+        <input type="text" v-model.trim.lazy="msg">
+        <p>{{msg}}</p>
+        <!-- 单选框 -->
+        <label>red</label><input type="radio" value="red" v-model="color">
+        <label>blue</label><input type="radio" value="blue" v-model="color">
+        <!-- 复选框 -->
+        <label>size<label>
+        <input type="checkbox" value="medium" v-model="size">
+        <input type="checkbox" value="small"  v-model="size">
+        <!-- 下拉列表 -->
+        <hr/>
+        <label>team</lable>
+        <select name="chooseTeam" id="" v-model="team" multiple>
+            <option value="ig">ig</option>
+            <option value="g2">g2</option>
+            <option value="fnc">fnc</option>
+            <option value="c9">c9</option>
+        </select>
+    </div>
+</body>
+    <script>
+        let app = new Vue({
+            el:"#app",
+            data:{
+                msg:"dont afraid,dont stop",
+                color:'',
+                size:[],
+                team:[],
+            }
+        })
+    </script>
+</html>
