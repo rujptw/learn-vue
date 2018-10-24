@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件注册及使用</title>
+    <script src="./vue.js"></script>
+    <style>
+        .contrast {
+            background: black;
+            color: white;
+        }
+
+        .orange {
+            background: aquamarine;
+            color: orangered;
+        }
+
+        .prop {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 组件使用 -->
+        <banner></banner>
+        <local-component></local-component>
+    </div>
+    <script>
+        // js/jsx里的组件名采用pascal命名法，
+        //html里得模板采用kebab命名法，
+        //组件文件名采用pascal命名法，
+        //props接收采用camel命名法，传递采用kebab命名法
+        // 全局组件注册,创建注册二合一了
+        Vue.component("Banner", {
+            template: "<p class='contrast' >{{msg}}</p>",
+            data: function () {
+                return {
+                    msg: "i am a global component",
+                    color: " oranged "
+                }
+            }
+        })
+        let MiniComponent = {
+            template: "<p>I just want run,hiding away  <span class='prop'>props</span>======》{{fColor}}</p>",
+            props: {
+                fColor: {
+                    type: String, //类型
+                    required: true, //必传
+                    default: 'bloodred', //未传递的默认值
+                    validator: function (v) { //校验
+                        return v.trim()
+                    }
+                }
+            },
+            mounted() {
+                // TODO:mounted似乎在非组件化的构造中无效❓❓❓❓❓❓❓❓❓❓❓❓❓
+                console.log(111)
+                console.log("fColor", this.color)
+            }
+        }
+        // 局部组件注册: 第一步创建,然后注册
+        let LocalComponent = {
+            template: "<mini-component :f-color='color'></mini-component><p class='orange'>{{msg}}</p>",
+            data: function () {
+                return {
+                    msg: 'i am a local component',
+                    color: 'orange'
+                }
+            },
+            components: {
+                MiniComponent
+            }
+        }
+
+        new Vue({
+            el: "#app",
+            // 组件注册
+            components: {
+                LocalComponent
+            }
+        })
+    </script>
+</body>
+
+</html>
